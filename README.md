@@ -2,6 +2,10 @@
 
 [Miro Board](https://miro.com/app/board/uXjVKzd5qLo=/)
 
+[Telegram UI Kit (Library)](https://github.com/Telegram-Mini-Apps/TelegramUI)
+
+[Telegram UI Kit (Figma)](https://www.figma.com/design/SlEkwvo1X8Ge7Ngr4zqw0F/Telegram-Mini-Apps-%C2%B7-UI-Kit-(Community))
+
 ### TODO
 
 tg mini-apps research, database design, dockerize
