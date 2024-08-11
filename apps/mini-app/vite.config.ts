@@ -1,5 +1,5 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import basicSsl from '@vitejs/plugin-basic-ssl';
@@ -10,12 +10,12 @@ export default defineConfig({
 
   server: {
     port: 4200,
-    host: 'localhost'
+    host: 'localhost',
   },
 
   preview: {
     port: 4300,
-    host: true
+    host: true,
   },
 
   plugins: [react(), nxViteTsPaths(), basicSsl()],
@@ -30,7 +30,7 @@ export default defineConfig({
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
-      transformMixedEsModules: true
-    }
-  }
+      transformMixedEsModules: true,
+    },
+  },
 });

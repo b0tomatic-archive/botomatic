@@ -9,7 +9,11 @@ import { Logger, NestApplicationOptions } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { RootModule } from '@botomatic/modules';
-import { GraphQLSchemaBuilderModule, GraphQLSchemaFactory, GraphQLSchemaHost } from '@nestjs/graphql';
+import {
+  GraphQLSchemaBuilderModule,
+  GraphQLSchemaFactory,
+  GraphQLSchemaHost,
+} from '@nestjs/graphql';
 import { GraphQLSchema, printSchema } from 'graphql/index';
 import { join } from 'path';
 import fs from 'fs';
@@ -20,13 +24,13 @@ import { logger } from 'nx/src/utils/logger';
 //  but the only required parts of it: resolvers, models, DTOs (no impl details like services, etc)
 //  https://docs.nestjs.com/graphql/generating-sdl
 export async function generateSchema({
-                                       logger: theLogger
-                                     }: {
+  logger: theLogger,
+}: {
   logger: NestApplicationOptions['logger'];
 }) {
   logger.log('Generating schema...');
   const app = await NestFactory.create(RootModule, {
-    logger: theLogger
+    logger: theLogger,
   });
   await app.init(); // Ensure the application is fully initialized
 

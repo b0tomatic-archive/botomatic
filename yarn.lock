@@ -2003,6 +2003,7 @@ __metadata:
     "@twa-dev/types": "npm:^7.0.0"
     "@types/express": "npm:4.17.14"
     "@types/jest": "npm:^29.4.0"
+    "@types/lodash": "npm:^4.17.7"
     "@types/node": "npm:18.16.9"
     "@types/react": "npm:18.3.1"
     "@types/react-dom": "npm:18.3.0"
@@ -2030,6 +2031,7 @@ __metadata:
     jest-environment-jsdom: "npm:^29.4.1"
     jest-environment-node: "npm:^29.4.1"
     jsdom: "npm:~22.1.0"
+    lodash: "npm:^4.17.21"
     mysql: "npm:^2.18.1"
     nx: "npm:19.5.1"
     prettier: "npm:^2.6.2"
@@ -2038,6 +2040,7 @@ __metadata:
     reflect-metadata: "npm:^0.1.13"
     rxjs: "npm:~7.8.0"
     sass: "npm:^1.55.0"
+    tldts: "npm:^6.1.39"
     ts-jest: "npm:^29.1.0"
     ts-node: "npm:10.9.1"
     tslib: "npm:^2.3.0"
@@ -2047,6 +2050,8 @@ __metadata:
     vite-plugin-graphql-codegen: "npm:^3.3.8"
     vitest: "npm:^1.3.1"
     webpack-cli: "npm:^5.1.4"
+    znv: "npm:^0.4.0"
+    zod: "npm:^3.23.8"
     zone.js: "npm:~0.14.3"
   languageName: unknown
   linkType: soft
@@ -5532,6 +5537,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.17.7":
+  version: 4.17.7
+  resolution: "@types/lodash@npm:4.17.7"
+  checksum: 10c0/40c965b5ffdcf7ff5c9105307ee08b782da228c01b5c0529122c554c64f6b7168fc8f11dc79aa7bae4e67e17efafaba685dc3a47e294dbf52a65ed2b67100561
+  languageName: node
+  linkType: hard
+
 "@types/long@npm:^4.0.0":
   version: 4.0.2
   resolution: "@types/long@npm:4.0.2"
@@ -8001,7 +8013,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorette@npm:^2.0.10, colorette@npm:^2.0.14, colorette@npm:^2.0.16, colorette@npm:^2.0.20":
+"colorette@npm:^2.0.10, colorette@npm:^2.0.14, colorette@npm:^2.0.16, colorette@npm:^2.0.19, colorette@npm:^2.0.20":
   version: 2.0.20
   resolution: "colorette@npm:2.0.20"
   checksum: 10c0/e94116ff33b0ff56f3b83b9ace895e5bf87c2a7a47b3401b8c3f3226e050d5ef76cf4072fb3325f9dc24d1698f9b730baf4e05eeaf861d74a1883073f4c98a40
@@ -18204,6 +18216,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tldts-core@npm:^6.1.39":
+  version: 6.1.39
+  resolution: "tldts-core@npm:6.1.39"
+  checksum: 10c0/404a5b3b1633d67455bb97b7ffb4da011d0652c27ddf0c8881e253b65def46c7a9aef8910ad0bbd6f5e55ce107a2ac09c516ebe218443f25014c57d7ae1c7d33
+  languageName: node
+  linkType: hard
+
+"tldts@npm:^6.1.39":
+  version: 6.1.39
+  resolution: "tldts@npm:6.1.39"
+  dependencies:
+    tldts-core: "npm:^6.1.39"
+  bin:
+    tldts: bin/cli.js
+  checksum: 10c0/b60e5d747883c366bf56f7b971b8b17f1adbe809f0cf3ac53bb6c2300507992818ebee1ad76799e4f07c020c170bcf58be592430797606fca3412e1aba4d7869
+  languageName: node
+  linkType: hard
+
 "tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
@@ -19875,6 +19905,24 @@ __metadata:
   version: 0.8.15
   resolution: "zen-observable@npm:0.8.15"
   checksum: 10c0/71cc2f2bbb537300c3f569e25693d37b3bc91f225cefce251a71c30bc6bb3e7f8e9420ca0eb57f2ac9e492b085b8dfa075fd1e8195c40b83c951dd59c6e4fbf8
+  languageName: node
+  linkType: hard
+
+"znv@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "znv@npm:0.4.0"
+  dependencies:
+    colorette: "npm:^2.0.19"
+  peerDependencies:
+    zod: ^3.13.2
+  checksum: 10c0/938bdb6f1c8f46c8bdc4f1be90d06f27ccecd443f8283e0b15f08591029ff90268e3207df7c1defb0c6803422e9e686ef3a42fd1428114f8831fc740d694f75a
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.23.8":
+  version: 3.23.8
+  resolution: "zod@npm:3.23.8"
+  checksum: 10c0/8f14c87d6b1b53c944c25ce7a28616896319d95bc46a9660fe441adc0ed0a81253b02b5abdaeffedbeb23bdd25a0bf1c29d2c12dd919aef6447652dd295e3e69
   languageName: node
   linkType: hard
 

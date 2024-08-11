@@ -10,6 +10,8 @@
 
 tg mini-apps research, database design, dockerize
 
+use postgresql
+
 envs intellisense & validation (& .env.example), ui libs, prettier & eslint setup, clean package.json,
 polish backend services communication (models, modules, orm, graphql, schemas) - figure it out clearly,
 maybe migrate nestjs from webpack to vite, CI/CD, fill up da docs, choose the right e2e tool (playwright vs cypress),

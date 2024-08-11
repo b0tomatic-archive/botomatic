@@ -1,7 +1,6 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import WebApp from '@twa-dev/sdk'
-
+import WebApp from '@twa-dev/sdk';
 import App from './app/app';
 
 WebApp.ready();
