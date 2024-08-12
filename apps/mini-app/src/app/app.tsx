@@ -1,23 +1,19 @@
 import './app.module.scss';
-import WebApp from '@twa-dev/sdk';
-import { parse } from 'tldts';
-import { last } from 'lodash';
-import { env } from '../env';
+import { useContext } from 'react';
+import { IdentifierContext, IdentifierProvider } from './contexts';
 
-function App() {
-  const { subdomain } = parse(window.location.hostname, {
-    validHosts: [env.NX_PUBLIC_HOST],
-  });
+const App = () => {
+  return (
+    <IdentifierProvider>
+      <Component />
+    </IdentifierProvider>
+  );
+};
 
-  const subdomains = subdomain
-    ?.split('.')
-    .filter((subdomain) => subdomain !== 'www');
+const Component = () => {
+  const data = useContext(IdentifierContext);
 
-  const identifier = last(subdomains);
-
-  WebApp.BackButton.show();
-
-  return <>{identifier}</>;
-}
+  return data?.identifier;
+};
 
 export default App;

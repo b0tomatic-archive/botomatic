@@ -4,6 +4,7 @@ import WebApp from '@twa-dev/sdk';
 import App from './app/app';
 
 WebApp.ready();
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
