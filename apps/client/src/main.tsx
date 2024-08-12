@@ -1,5 +1,10 @@
 import { StrictMode } from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from '@apollo/client';
 import * as ReactDOM from 'react-dom/client';
 
 import App from './app/app';
@@ -7,7 +12,7 @@ import App from './app/app';
 const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql',
   typeDefs: ['../../schema.graphql', '../../libs/schematics/**/*.graphql'],
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 const root = ReactDOM.createRoot(

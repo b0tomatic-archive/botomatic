@@ -4,17 +4,17 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
-import { UsersModule } from '../users';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'node:path';
 import { PostsModule } from '@botomatic/resolvers';
 import { serverEnv } from '@botomatic/env/server';
+import { UsersModule, IdentifiersModule } from '../../';
 
 @Module({
   imports: [
     // https://stackoverflow.com/questions/55366037/inject-typeorm-repository-into-nestjs-service-for-mock-data-testing
     TypeOrmModule.forRoot(
-      serverEnv.IS_CI
+      true // serverEnv.IS_CI
         ? {
             type: 'better-sqlite3',
             database: ':memory:',
@@ -49,6 +49,7 @@ import { serverEnv } from '@botomatic/env/server';
     }),
     UsersModule,
     PostsModule,
+    IdentifiersModule,
   ],
 })
 export class RootModule {

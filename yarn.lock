@@ -2028,6 +2028,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:4.6.0"
     express: "npm:^4.19.2"
     graphql: "npm:^16.9.0"
+    graphql-config: "npm:^5.1.0"
     jest: "npm:^29.4.1"
     jest-environment-jsdom: "npm:^29.4.1"
     jest-environment-node: "npm:^29.4.1"
@@ -11298,6 +11299,31 @@ __metadata:
     cosmiconfig-toml-loader:
       optional: true
   checksum: 10c0/dadd04b08b0af5b9652ef1e8baf09adb7221ffca48e5272d933ee6faf0b962260a46b5e0da536576de56ffbdca118b257038e3319834045403fec9528b743e78
+  languageName: node
+  linkType: hard
+
+"graphql-config@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "graphql-config@npm:5.1.0"
+  dependencies:
+    "@graphql-tools/graphql-file-loader": "npm:^8.0.0"
+    "@graphql-tools/json-file-loader": "npm:^8.0.0"
+    "@graphql-tools/load": "npm:^8.0.0"
+    "@graphql-tools/merge": "npm:^9.0.0"
+    "@graphql-tools/url-loader": "npm:^8.0.0"
+    "@graphql-tools/utils": "npm:^10.0.0"
+    cosmiconfig: "npm:^8.1.0"
+    jiti: "npm:^1.18.2"
+    minimatch: "npm:^4.2.3"
+    string-env-interpolation: "npm:^1.0.1"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    cosmiconfig-toml-loader: ^1.0.0
+    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  peerDependenciesMeta:
+    cosmiconfig-toml-loader:
+      optional: true
+  checksum: 10c0/bd2ce60b75ea8117cb977c22aa57e19414e4f61dcc36980602dcb58a5a14cd8de1260139822667887563c89d93ef3a9e8a29cec7bbcfc2a2ee3b0462cc89241a
   languageName: node
   linkType: hard
 

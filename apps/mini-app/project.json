@@ -5,13 +5,28 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "schema": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "server:schema"
+      ],
+      "options": {
+        "cwd": "apps/client",
+        "commands": [
+          "graphql-codegen --config graphql.codegen.ts"
+        ]
+      }
+    },
     "build": {
       "executor": "@nx/vite:build",
       "options": {
         "outputPath": "dist/apps/mini-app",
         "configFile": "apps/mini-app/vite.config.ts",
         "skipTypeCheck": false
-      }
+      },
+      "dependsOn": [
+        "schema"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",

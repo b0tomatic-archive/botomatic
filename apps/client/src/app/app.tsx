@@ -13,9 +13,11 @@ export function App() {
   const { data: withExampleField } = useQuery<GetUserWithExampleFieldQuery>(
     GET_USERS_WITH_EXAMPLE_FIELD
   );
-  const { data: data } = useQuery(GET_USER, {
+  const { data: data } = useQuery<GetUserQuery>(GET_USER, {
     variables: { id: 1 },
   });
+
+  console.log(withExampleField, data);
 
   return (
     <>

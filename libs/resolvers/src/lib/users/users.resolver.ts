@@ -1,12 +1,34 @@
-import { Resolver, Query, Mutation, Args, Int, ObjectType, ID, Field } from '@nestjs/graphql';
-import { User } from '@botomatic/entities';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ObjectType,
+  ID,
+  Field,
+} from '@nestjs/graphql';
+import { Identifier, User } from '@botomatic/entities';
 import { UpdateUserInput, CreateUserInput } from '@botomatic/entities';
 import { UsersService } from '@botomatic/services';
 import { Module } from '@nestjs/common';
 
+@Resolver(() => Identifier)
+export class IdentifierResolver {
+  @Query(() => [Identifier], { name: 'identifiers' })
+  findAll() {
+    return [{ id: 'home' }, { id: 'app' }];
+  }
+
+  @Query(() => Identifier, { name: 'identifier' })
+  findOne(@Args('id', { type: () => String }) id: string) {
+    return { id };
+  }
+}
+
 @ObjectType()
 export class Post {
-  @Field(returns => Int, { nullable: true })
+  @Field((returns) => Int, { nullable: true })
   id?: number;
 }
 
@@ -14,23 +36,23 @@ export class Post {
 export class PostsResolver {
   @Query(() => [Post], { name: 'posts' })
   findAll() {
-    return [{
-      id: 100
-    }];
+    return [
+      {
+        id: 100,
+      },
+    ];
   }
 }
 
 @Module({
   imports: [],
-  providers: [PostsResolver]
+  providers: [PostsResolver],
 })
-export class PostsModule {
-}
+export class PostsModule {}
 
 @Resolver(() => User)
 export class UsersResolver {
-  constructor(private readonly usersService: UsersService) {
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   @Mutation(() => User)
   createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
