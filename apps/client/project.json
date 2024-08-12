@@ -7,14 +7,11 @@
   "targets": {
     "schema": {
       "executor": "nx:run-commands",
-      "dependsOn": [
-        "server:schema"
-      ],
+      "dependsOn": ["server:schema"],
+      "cache": true,
       "options": {
         "cwd": "apps/client",
-        "commands": [
-          "graphql-codegen --config graphql.codegen.ts"
-        ]
+        "commands": ["graphql-codegen --config graphql.codegen.ts"]
       }
     },
     "build": {
@@ -24,15 +21,11 @@
         "configFile": "apps/client/vite.config.ts",
         "skipTypeCheck": false
       },
-      "dependsOn": [
-        "schema"
-      ]
+      "dependsOn": ["schema"]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/client/jest.config.ts"
       }

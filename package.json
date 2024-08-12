@@ -8,7 +8,7 @@
     "server": "nx serve server",
     "client": "nx serve client",
     "mini-app": "nx serve mini-app",
-    "build": "nx build server && nx build client",
+    "build": "nx build server && nx build client && nx build mini-app",
     "codegen": "nx schema client --watch"
   },
   "dependencies": {

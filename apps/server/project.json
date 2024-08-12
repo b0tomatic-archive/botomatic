@@ -12,13 +12,9 @@
         "env": {
           "IS_CI": "true"
         },
-        "commands": [
-          "nx serve server --watch=false --args=--generate-schema"
-        ]
+        "commands": ["nx serve server --watch=false --args=--generate-schema"]
       },
-      "outputs": [
-        "{projectRoot}/schema.graphql"
-      ]
+      "outputs": ["{workspaceRoot}/schema.graphql"]
     },
     "serve": {
       "executor": "@nx/js:node",
@@ -34,9 +30,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/server/jest.config.ts"
       }
