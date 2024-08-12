@@ -8,6 +8,7 @@
     "schema": {
       "executor": "nx:run-commands",
       "dependsOn": ["server:schema"],
+      "cache": true,
       "options": {
         "cwd": "apps/client",
         "commands": ["graphql-codegen --config graphql.codegen.ts"]
@@ -15,9 +16,10 @@
     },
     "build": {
       "executor": "@nx/vite:build",
+      "cache": true,
       "options": {
         "outputPath": "dist/apps/mini-app",
-        "configFile": "apps/mini-app/vite.config.ts",
+        "configFile": "apps/mini-app/vite.config.mts",
         "skipTypeCheck": false
       },
       "dependsOn": ["schema"]

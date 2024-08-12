@@ -16,9 +16,10 @@
     },
     "build": {
       "executor": "@nx/vite:build",
+      "cache": true,
       "options": {
         "outputPath": "dist/apps/client",
-        "configFile": "apps/client/vite.config.ts",
+        "configFile": "apps/client/vite.config.mts",
         "skipTypeCheck": false
       },
       "dependsOn": ["schema"]
