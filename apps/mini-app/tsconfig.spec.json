@@ -22,6 +22,6 @@
     "src/**/*.spec.jsx",
     "src/**/*.d.ts",
     "global.d.ts",
-    "src/env.d.ts"
+    "env.d.ts"
   ]
 }

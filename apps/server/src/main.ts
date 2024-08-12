@@ -19,10 +19,8 @@ import { join } from 'path';
 import fs from 'fs';
 import * as process from 'node:process';
 import { logger } from 'nx/src/utils/logger';
+import { serverEnv } from '@botomatic/env/server';
 
-// TODO: Divide the schematics library to smaller libs, so for the schema generation I wouldn't use modules,
-//  but the only required parts of it: resolvers, models, DTOs (no impl details like services, etc)
-//  https://docs.nestjs.com/graphql/generating-sdl
 export async function generateSchema({
   logger: theLogger,
 }: {
@@ -50,7 +48,7 @@ async function bootstrap() {
   const app = await NestFactory.create(RootModule);
   app.enableCors();
 
-  const port = process.env.PORT || 3000;
+  const port = serverEnv.PORT;
   await app.listen(port);
 
   Logger.log(`🚀 Application is running on: ${await app.getUrl()}`);
@@ -68,7 +66,7 @@ if (process.argv.includes('--generate-schema')) {
     });
 } else {
   bootstrap().then(() => {
-    if (process.env.NODE_ENV === 'production') {
+    if (serverEnv.NODE_ENV === 'production') {
       return;
     }
 

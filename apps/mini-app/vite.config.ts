@@ -4,8 +4,11 @@ import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
+const ENV_PREFIXES = ['NX_PUBLIC_', 'VITE_'];
+const root = __dirname;
+
 export default defineConfig({
-  root: __dirname,
+  root,
   cacheDir: '../../node_modules/.vite/apps/mini-app',
 
   server: {
@@ -24,6 +27,7 @@ export default defineConfig({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+  envPrefix: ENV_PREFIXES,
 
   build: {
     outDir: '../../dist/apps/mini-app',

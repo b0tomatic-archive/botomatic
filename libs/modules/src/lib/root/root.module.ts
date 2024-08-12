@@ -8,15 +8,13 @@ import { UsersModule } from '../users';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'node:path';
 import { PostsModule } from '@botomatic/resolvers';
-import * as process from 'node:process';
-
-const IS_CI = process.env.IS_CI === 'true';
+import { serverEnv } from '@botomatic/env/server';
 
 @Module({
   imports: [
     // https://stackoverflow.com/questions/55366037/inject-typeorm-repository-into-nestjs-service-for-mock-data-testing
     TypeOrmModule.forRoot(
-      IS_CI
+      serverEnv.IS_CI
         ? {
             type: 'better-sqlite3',
             database: ':memory:',
@@ -44,7 +42,7 @@ const IS_CI = process.env.IS_CI === 'true';
       driver: ApolloDriver,
       autoSchemaFile: true, // process.env.NODE_ENV === 'production' || join(__dirname, 'assets/schema.graphql')
       sortSchema: true,
-      introspection: process.env.NODE_ENV !== 'production',
+      introspection: serverEnv.NODE_ENV !== 'production',
 
       // playground: true,
       // plugins: [ApolloServerPluginLandingPageLocalDefault()]

@@ -5,7 +5,7 @@
 /// <reference types="vite/client" />
 
 type EnvVariables = {
-  [K in keyof typeof import('../env').env];
+  [K in keyof typeof import('./src/env').env];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

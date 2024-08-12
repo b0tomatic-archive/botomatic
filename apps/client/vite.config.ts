@@ -4,32 +4,37 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import codegen from 'vite-plugin-graphql-codegen';
 import config from './graphql.codegen';
 
-const isProduction = process.env.NODE_ENV === 'production';
-// noinspection JSUnusedGlobalSymbols
-export default defineConfig({
-  root: __dirname,
+const ENV_PREFIXES = ['NX_PUBLIC_', 'VITE_'];
+const root = __dirname;
+
+export default defineConfig(({ mode }) => ({
+  root,
   cacheDir: '../../node_modules/.vite/apps/client',
 
   server: {
     port: 4200,
-    host: 'localhost'
+    host: 'localhost',
   },
 
   preview: {
     port: 4300,
-    host: 'localhost'
+    host: 'localhost',
   },
 
   plugins: [
-    ...(!isProduction ? [
-      codegen({
-        config,
-        runOnBuild: true
-      })
-    ] : []),
+    ...(mode === 'development'
+      ? [
+          codegen({
+            config,
+            runOnBuild: true,
+          }),
+        ]
+      : []),
     react(),
-    nxViteTsPaths()
+    nxViteTsPaths(),
   ],
+
+  envPrefix: ENV_PREFIXES,
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -41,9 +46,9 @@ export default defineConfig({
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
-      transformMixedEsModules: true
-    }
-  }
+      transformMixedEsModules: true,
+    },
+  },
 
   // doesn't work some why
   // resolve: {
@@ -54,4 +59,4 @@ export default defineConfig({
   //     )
   //   }
   // }
-});
+}));

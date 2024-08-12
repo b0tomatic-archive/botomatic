@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@botomatic/entities": ["libs/entities/src/index.ts"],
-      "@botomatic/env": ["libs/env/src/index.ts"],
+      "@botomatic/env/client": ["libs/env/client/src/index.ts"],
+      "@botomatic/env/server": ["libs/env/server/src/index.ts"],
+      "@botomatic/env/shared": ["libs/env/shared/src/index.ts"],
       "@botomatic/modules": ["libs/modules/src/index.ts"],
       "@botomatic/resolvers": ["libs/resolvers/src/index.ts"],
       "@botomatic/services": ["libs/services/src/index.ts"]
