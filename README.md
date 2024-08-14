@@ -5,12 +5,6 @@
 [<img height="16" src="https://static-00.iconduck.com/assets.00/notion-icon-256x256-g1arps9e.png"> Notion](https://www.notion.so/041abe276e704275aeecd32991a0b0fe?v=ee6e2b1f1de741d384477959ffff2c76)
 [<img height="16" src="https://static-00.iconduck.com/assets.00/apps-figma-icon-2048x2048-ctjj5ab7.png"> Figma](https://www.figma.com/design/Pjo2j06BT3O0aq7e2ToQDr)
 
----
-
-[Telegram UI Kit (Library)](https://github.com/Telegram-Mini-Apps/TelegramUI)
-
-[Telegram UI Kit (Figma)](<https://www.figma.com/design/SlEkwvo1X8Ge7Ngr4zqw0F/Telegram-Mini-Apps-%C2%B7-UI-Kit-(Community)>)
-
 ## Stack
 
 <table>
@@ -86,6 +80,7 @@
 #### Others
 
 - [Telegram Mini-Apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk)
+- [Telegram UI Storybook](https://tgui.xelene.me)
 
 ## Getting Started
 
