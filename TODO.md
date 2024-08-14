@@ -1,6 +1,6 @@
 ### Project TODOs
 
-- Headless UI, Nginx, Cache (+ Redis?)
+- Headless UI, Nginx, Cache (+ Redis?) & explain why we didn't choose using SSR
 
 This document outlines the key tasks and considerations for the ongoing development. Below is a list of the tasks, along with brief descriptions and any relevant decisions or notes.
 
