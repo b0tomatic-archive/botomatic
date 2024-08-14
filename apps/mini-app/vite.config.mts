@@ -37,6 +37,8 @@ export default defineConfig(({ mode }) => ({
     basicSsl(),
   ],
 
+  appType: 'spa',
+
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],

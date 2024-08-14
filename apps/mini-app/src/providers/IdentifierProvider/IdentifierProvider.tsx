@@ -1,8 +1,8 @@
 import { last } from 'lodash';
-import { IdentifierContext } from './IdentifierContext';
 import { parse } from 'tldts';
 import { env } from '../../env';
 import { useEffect, useState } from 'react';
+import { IdentifierContext } from '../../contexts';
 
 // TODO: Refactor, put in a lib
 type IdentifierProviderProps = {
