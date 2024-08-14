@@ -82,7 +82,7 @@
   </tr>
 </table>
 
-#### Others:
+#### Others
 
 - [Telegram Mini-Apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk)
 
@@ -164,27 +164,27 @@ All the tasks of apps and libs that Nx can run are is stored in `nx.json` at the
 
 ### Code Generation Strategy
 
-#### Code-First Approach (No Backend Code Generation):
+#### Code-First Approach (No Backend Code Generation)
 
 In a code-first approach, there's no need to generate GraphQL code for the backend. The schema is automatically generated based on the TypeScript definitions in the backend. Therefore, code generation is only necessary for the frontend, to create type-safe queries, mutations, and other GraphQL operations.
 
-#### Frontend-Only Code Generation:
+#### Frontend-Only Code Generation
 
 Since the backend does not require code generation, the process can be streamlined by focusing solely on the frontend. The GraphQL code generator should be configured to run exclusively for the frontend, ensuring that type-safe client-side operations are available without unnecessary backend processing.
 
 ### Schema Generation and Usage
 
-#### Backend Schema Generation:
+#### Backend Schema Generation
 
 The GraphQL schema is generated either:
 
 - Automatically during each startup or rebuild of the NestJS application.
 - Manually by running `build` or `schema` generation command.
 
-#### Frontend Code Generation:
+#### Frontend Code Generation
 
 By running `build` or `schema` command for the client, the server schema is always generated first, then the frontend GraphQL code is automatically generated. This step is essential to ensure that the frontend is synchronized with the latest schema, providing type-safe operations for queries, mutations, and subscriptions.
 
-#### Build Dependencies:
+#### Build Dependencies
 
 The client-side code generation depends on the server schema being up-to-date. Therefore, any client build process that requires GraphQL code generation must ensure that the server schema has been generated first.
