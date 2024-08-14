@@ -30,11 +30,44 @@
 
 import { useIntegration } from '@telegram-apps/react-router-integration';
 import { initNavigator } from '@telegram-apps/sdk-react';
+import { Card, List } from '@telegram-apps/telegram-ui';
+import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
+import { CardChip } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip';
 import { type FC, useEffect, useMemo } from 'react';
 import { Navigate, Route, Router, Routes } from 'react-router-dom';
 
 const IndexPage = () => {
-  return 'Hello World!';
+  const imageUrls = [
+    'https://dev-bmtc.s3.amazonaws.com/flowers.jpg',
+    'https://dev-bmtc.s3.amazonaws.com/headphones.jpg',
+    'https://dev-bmtc.s3.amazonaws.com/car.jpg',
+    'https://dev-bmtc.s3.amazonaws.com/sneakers.jpg',
+  ];
+
+  return (
+    <List>
+      {Array.from({ length: 500 }, (_, index) => (
+        <Card key={index}>
+          <>
+            <CardChip readOnly>Hot place</CardChip>
+            <img
+              alt="Dog"
+              src={imageUrls[Math.floor(Math.random() * imageUrls.length)]}
+              style={{
+                display: 'block',
+                height: 308,
+                objectFit: 'cover',
+                width: 254,
+              }}
+            />
+            <CardCell readOnly subtitle="United states">
+              New York
+            </CardCell>
+          </>
+        </Card>
+      ))}
+    </List>
+  );
 };
 
 export const App: FC = () => {

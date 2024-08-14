@@ -3,6 +3,7 @@
 [<img height="16" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_7QfylUbLhryd8FTo39v0uqC4mCNhlfyoXZwaT9DTfFVCF5VDq6Hjsor1d5jmPuPcFhY&usqp=CAU"> Miro](https://miro.com/app/board/uXjVKzd5qLo=/)
 [<img height="16" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/YouTrack_Icon.svg/2048px-YouTrack_Icon.svg.png"> YouTrack](https://botomatic.youtrack.cloud/agiles)
 [<img height="16" src="https://static-00.iconduck.com/assets.00/notion-icon-256x256-g1arps9e.png"> Notion](https://www.notion.so/041abe276e704275aeecd32991a0b0fe?v=ee6e2b1f1de741d384477959ffff2c76)
+[<img height="16" src="https://static-00.iconduck.com/assets.00/apps-figma-icon-2048x2048-ctjj5ab7.png"> Figma](https://www.figma.com/design/Pjo2j06BT3O0aq7e2ToQDr)
 
 ---
 
