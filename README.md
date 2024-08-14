@@ -1,28 +1,14 @@
 # Botomatic
 
-[Miro Board](https://miro.com/app/board/uXjVKzd5qLo=/)
+[<img height="16" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_7QfylUbLhryd8FTo39v0uqC4mCNhlfyoXZwaT9DTfFVCF5VDq6Hjsor1d5jmPuPcFhY&usqp=CAU"> Miro](https://miro.com/app/board/uXjVKzd5qLo=/)
+[<img height="16" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/YouTrack_Icon.svg/2048px-YouTrack_Icon.svg.png"> YouTrack](https://botomatic.youtrack.cloud/agiles)
+[<img height="16" src="https://static-00.iconduck.com/assets.00/notion-icon-256x256-g1arps9e.png"> Notion](https://www.notion.so/041abe276e704275aeecd32991a0b0fe?v=ee6e2b1f1de741d384477959ffff2c76)
+
+---
 
 [Telegram UI Kit (Library)](https://github.com/Telegram-Mini-Apps/TelegramUI)
 
 [Telegram UI Kit (Figma)](<https://www.figma.com/design/SlEkwvo1X8Ge7Ngr4zqw0F/Telegram-Mini-Apps-%C2%B7-UI-Kit-(Community)>)
-
-### TODO
-
-tg mini-apps research, database design, dockerize
-
-use postgresql
-
-ui libs, prettier & eslint setup, clean package.json,
-MAYBE replace apollo-client with urlq (?) as it much more light-weighted and performant for heavy apps,
-logging, middlewares, auth, server (fastify/express)
-
-for docs:
-
-- as if we'd choose schema first approach, we'd need to generate our graphql code on the backend too, but in the chosen already case, we ain't need to do so. that means that no code generation is needed for the backend or its modules, so it only remains for the frontend, which also means that we can move the code generator to the front-end only part. or leave it as it is but used only for front end
-
-- we don't generate code for mutations from schema at the backend as we use the code first approach, so it comes to the schema and if we generate sum, that's only the front end code of queries, mutations, etc, for type safe fields usage
-
-- The graphql schema is generated either at the every start/rebuild of the nest app or manually when the app is turned off by build or schema command. The front-end gql code is generated after the server schema, always automatically when the whole app is being built or just the client. But building the client code requires schema generation, and that requires server app building.
 
 ## Stack
 
@@ -96,9 +82,15 @@ for docs:
   </tr>
 </table>
 
+#### Others:
+
+- [Telegram Mini-Apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk)
+
 ## Getting Started
 
-Select the project Node.js version:
+**Don't have `nvm` installed?** For MacOS, Linux, [check the tutorial here.](https://github.com/nvm-sh/nvm) In case if you have Windows, [check this tutorial.](https://github.com/coreybutler/nvm-windows)
+
+Now select the project's Node.JS version:
 
 ```shell
 nvm use # Sets the version from .nvmrc file
@@ -120,8 +112,6 @@ yarn
 
 ### Back-End
 
-Stack: Nest.JS + TypeORM + GraphQL
-
 **Server:** All the back-end infrastructure is here
 
 ```shell
@@ -129,8 +119,6 @@ yarn server
 ```
 
 ### Front-End
-
-Stack: Vite + React + GraphQL
 
 **Client:** Dashboard, Mini-Apps Configurator
 
@@ -164,10 +152,39 @@ To see the flow of projects/tasks depend on each other:
 nx graph
 ```
 
-As the UI appears, at the top of the left sidebar you can select `Projects`, `Tasks`
+As the UI appears, at the top of the left sidebar you can select `Projects`, `Tasks`.
 
-All the tasks of apps and libs that Nx can run are is stored in `nx.json` at the root of the project, and in `project.json` at the root of each app or library (e.g. **apps/client/project.json**)
+All the tasks of apps and libs that Nx can run are is stored in `nx.json` at the root of the project, and in `project.json` at the root of each app or library (e.g. **apps/client/project.json**).
 
 [More about `nx.json`](https://nx.dev/reference/nx-json)
 
 [More about `project.json`](https://nx.dev/reference/project-configuration)
+
+## GraphQL Code Generation and Schema Management
+
+### Code Generation Strategy
+
+#### Code-First Approach (No Backend Code Generation):
+
+In a code-first approach, there's no need to generate GraphQL code for the backend. The schema is automatically generated based on the TypeScript definitions in the backend. Therefore, code generation is only necessary for the frontend, to create type-safe queries, mutations, and other GraphQL operations.
+
+#### Frontend-Only Code Generation:
+
+Since the backend does not require code generation, the process can be streamlined by focusing solely on the frontend. The GraphQL code generator should be configured to run exclusively for the frontend, ensuring that type-safe client-side operations are available without unnecessary backend processing.
+
+### Schema Generation and Usage
+
+#### Backend Schema Generation:
+
+The GraphQL schema is generated either:
+
+- Automatically during each startup or rebuild of the NestJS application.
+- Manually by running `build` or `schema` generation command.
+
+#### Frontend Code Generation:
+
+By running `build` or `schema` command for the client, the server schema is always generated first, then the frontend GraphQL code is automatically generated. This step is essential to ensure that the frontend is synchronized with the latest schema, providing type-safe operations for queries, mutations, and subscriptions.
+
+#### Build Dependencies:
+
+The client-side code generation depends on the server schema being up-to-date. Therefore, any client build process that requires GraphQL code generation must ensure that the server schema has been generated first.
