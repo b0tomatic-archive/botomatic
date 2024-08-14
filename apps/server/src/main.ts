@@ -20,6 +20,18 @@ import fs from 'fs';
 import * as process from 'node:process';
 import { logger } from 'nx/src/utils/logger';
 import { serverEnv } from '@botomatic/env/server';
+import { FastifyAdapter } from '@nestjs/platform-fastify';
+
+async function bootstrap() {
+  const app = await NestFactory.create(RootModule, new FastifyAdapter(), {
+    cors: true,
+  });
+
+  const port = serverEnv.PORT;
+  await app.listen(port);
+
+  Logger.log(`🚀 Application is running on: http://localhost:${port}`);
+}
 
 export async function generateSchema({
   logger: theLogger,
@@ -42,16 +54,6 @@ export async function generateSchema({
   await app.close();
 
   return schemaPath;
-}
-
-async function bootstrap() {
-  const app = await NestFactory.create(RootModule);
-  app.enableCors();
-
-  const port = serverEnv.PORT;
-  await app.listen(port);
-
-  Logger.log(`🚀 Application is running on: ${await app.getUrl()}`);
 }
 
 if (process.argv.includes('--generate-schema')) {

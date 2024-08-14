@@ -1,7 +1,7 @@
 import { last } from 'lodash';
 import { IdentifierContext } from './IdentifierContext';
 import { parse } from 'tldts';
-import { env } from '../../../env';
+import { env } from '../../env';
 import { useEffect, useState } from 'react';
 
 // TODO: Refactor, put in a lib

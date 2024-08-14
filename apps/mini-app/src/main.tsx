@@ -1,10 +1,15 @@
+// Uncomment this import in case, you would like to develop the application even outside
+// the Telegram application, just in your browser.
+import './mockEnv';
+
+import '@telegram-apps/telegram-ui/dist/styles.css';
+import './styles.scss';
+
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import WebApp from '@twa-dev/sdk';
-import App from './app/app';
+import { App } from './app/app';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-
-WebApp.ready();
+import { Root } from './app/root';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql',
@@ -12,13 +17,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </StrictMode>
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <Root />
+  // <StrictMode>
+  //   <ApolloProvider client={client}>
+  //     <App />
+  //   </ApolloProvider>
+  // </StrictMode>
 );

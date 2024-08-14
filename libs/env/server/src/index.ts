@@ -11,6 +11,7 @@ export const serverEnv = z
       z.literal('test'),
     ]),
     PORT: z.coerce.number().default(3000),
+    FASTIFY_PORT: z.coerce.number().default(3001),
     IS_CI: z.coerce.boolean(),
   })
   .merge(sharedEnv)

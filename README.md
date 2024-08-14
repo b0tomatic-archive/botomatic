@@ -4,7 +4,7 @@
 
 [Telegram UI Kit (Library)](https://github.com/Telegram-Mini-Apps/TelegramUI)
 
-[Telegram UI Kit (Figma)](https://www.figma.com/design/SlEkwvo1X8Ge7Ngr4zqw0F/Telegram-Mini-Apps-%C2%B7-UI-Kit-(Community))
+[Telegram UI Kit (Figma)](<https://www.figma.com/design/SlEkwvo1X8Ge7Ngr4zqw0F/Telegram-Mini-Apps-%C2%B7-UI-Kit-(Community)>)
 
 ### TODO
 
@@ -12,9 +12,7 @@ tg mini-apps research, database design, dockerize
 
 use postgresql
 
-envs intellisense & validation (& .env.example), ui libs, prettier & eslint setup, clean package.json,
-polish backend services communication (models, modules, orm, graphql, schemas) - figure it out clearly,
-maybe migrate nestjs from webpack to vite, CI/CD, fill up da docs, choose the right e2e tool (playwright vs cypress),
+ui libs, prettier & eslint setup, clean package.json,
 MAYBE replace apollo-client with urlq (?) as it much more light-weighted and performant for heavy apps,
 logging, middlewares, auth, server (fastify/express)
 
