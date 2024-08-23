@@ -9,47 +9,46 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'node:path';
 import { PostsModule } from '@botomatic/resolvers';
 import * as process from 'node:process';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { User } from '@botomatic/entities';
 
-const IS_CI = process.env.IS_CI === 'true';
+//const IS_CI = process.env.IS_CI === 'true';
+const IS_CI = false;
 
 @Module({
   imports: [
-    // https://stackoverflow.com/questions/55366037/inject-typeorm-repository-into-nestjs-service-for-mock-data-testing
-    TypeOrmModule.forRoot(IS_CI ? {
-      type: 'better-sqlite3',
-      database: ':memory:',
-
-      entities: [join(__dirname, '../../', '**/*.entity{.ts,.js}')],
-      autoLoadEntities: true,
-      synchronize: false,
-      logging: true
-    } : {
-      type: 'mysql', // 'better-sqlite3',
-      host: process.env.MYSQL_HOST,
-      port: process.env.MYSQL_PORT as unknown as number,
-      username: process.env.MYSQL_USERNAME,
-      database: process.env.MYSQL_NAME, // './db.sqlite3',
-      // password: 'root',
-
-      entities: [join(__dirname, '../../', '**/*.entity{.ts,.js}')],
-      autoLoadEntities: true,
-      synchronize: false,
-      logging: true
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (ConfigService: ConfigService) => ({
+        type: 'postgres',
+        host: ConfigService.get('DB_HOST'),
+        port: ConfigService.get('DB_PORT'),
+        username: ConfigService.get('DB_USER_NAME'),
+        password: ConfigService.get('DB_PASSWORD'),
+        database: ConfigService.get('DB_NAME'),
+        // for me explicitly enumrating schemas in an array
+        // is more convenient
+        // can discuss though
+        entities: [User],
+        //entities: [join(__dirname, '../../', '**/*.entity{.ts,.js}')],
+        synchronize: true,
+      }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true, // process.env.NODE_ENV === 'production' || join(__dirname, 'assets/schema.graphql')
       sortSchema: true,
-      introspection: process.env.NODE_ENV !== 'production'
+      introspection: process.env.NODE_ENV !== 'production',
 
       // playground: true,
       // plugins: [ApolloServerPluginLandingPageLocalDefault()]
     }),
     UsersModule,
-    PostsModule
-  ]
+    PostsModule,
+  ],
 })
 export class RootModule {
-  constructor(private dataSource: DataSource) {
-  }
+  constructor(private dataSource: DataSource) {}
 }
