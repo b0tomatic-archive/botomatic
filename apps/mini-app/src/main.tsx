@@ -7,7 +7,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app/app';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { MiniAppSDKProvider, MiniAppViewProvider } from './providers';
+import {
+  IdentifierProvider,
+  MiniAppSDKProvider,
+  MiniAppViewProvider,
+} from './providers';
 import { env } from './env';
 
 // Uncomment this in case, you would like to develop the application even outside
@@ -28,7 +32,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     <MiniAppSDKProvider>
       <MiniAppViewProvider>
         <ApolloProvider client={client}>
-          <App />
+          <IdentifierProvider>
+            <App />
+          </IdentifierProvider>
         </ApolloProvider>
       </MiniAppViewProvider>
     </MiniAppSDKProvider>

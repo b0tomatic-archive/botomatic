@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => ({
       : []),
     react(),
     nxViteTsPaths(),
-    basicSsl(),
+    // basicSsl(),
   ],
 
   appType: 'spa',

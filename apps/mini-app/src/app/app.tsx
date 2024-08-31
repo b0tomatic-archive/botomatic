@@ -17,10 +17,6 @@
 // const Component = () => {
 //   const data = useContext(IdentifierContext);
 
-//   const { data: result } = useQuery<GetIdentifierQuery>(GET_IDENTIFIER, {
-//     variables: { id: data?.identifier },
-//   });
-
 //   console.log(result);
 
 //   return data?.identifier;
@@ -33,8 +29,12 @@ import { initNavigator } from '@telegram-apps/sdk-react';
 import { Card, List } from '@telegram-apps/telegram-ui';
 import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
 import { CardChip } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip';
-import { type FC, useEffect, useMemo } from 'react';
+import { type FC, useContext, useEffect, useMemo } from 'react';
 import { Navigate, Route, Router, Routes } from 'react-router-dom';
+import { IdentifierContext } from '../contexts';
+import { useQuery } from '@apollo/client';
+import { GetIdentifierQuery } from '../__generated__/graphql';
+import { GET_IDENTIFIER } from './app.queries';
 
 const IndexPage = () => {
   const imageUrls = [
@@ -46,7 +46,7 @@ const IndexPage = () => {
 
   return (
     <List>
-      {Array.from({ length: 500 }, (_, index) => (
+      {Array.from({ length: 5 }, (_, index) => (
         <Card key={index}>
           <>
             <CardChip readOnly>Hot place</CardChip>
@@ -73,15 +73,29 @@ const IndexPage = () => {
 export const App: FC = () => {
   // Create a new application navigator and attach it to the browser history, so it could modify
   // it and listen to its changes.
-  const navigator = useMemo(() => initNavigator('app-navigation-state'), []);
-  const [location, reactNavigator] = useIntegration(navigator);
+  // const navigator = useMemo(() => initNavigator('app-navigation-state'), []);
+  // const [location, reactNavigator] = useIntegration(navigator);
+  const value = useContext(IdentifierContext);
+
+  const data = useQuery<GetIdentifierQuery>(GET_IDENTIFIER, {
+    variables: { id: value?.identifier },
+  });
+
+  // postgresql mongoDBs table
+  // unchained -> mongodb
+  // const fieldName = db.getFieldName(identifier);
+  // const fieldData = db[fieldName].getData();
+
+  console.log(data);
 
   // Don't forget to attach the navigator to allow it to control the BackButton state as well
   // as browser history.
-  useEffect(() => {
-    navigator.attach();
-    return () => navigator.detach();
-  }, [navigator]);
+  // useEffect(() => {
+  // navigator.attach();
+  // return () => navigator.detach();
+  // }, [navigator]);
+
+  return data?.data?.identifier?.id;
 
   return (
     <Router location={location} navigator={reactNavigator}>

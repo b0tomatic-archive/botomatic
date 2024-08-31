@@ -22,7 +22,12 @@ export class IdentifierResolver {
 
   @Query(() => Identifier, { name: 'identifier' })
   findOne(@Args('id', { type: () => String }) id: string) {
-    return { id };
+    if (id === 'app01') {
+      return { id: 'Config 01' };
+    } else if (id === 'app02') {
+      return { id: 'Config 02' };
+    }
+    return { id: 'Default Config' };
   }
 }
 
