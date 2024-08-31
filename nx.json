@@ -40,7 +40,9 @@
         }
       }
     },
-    "server": { "cache": true },
+    "server": {
+      "cache": true
+    },
     "schema": {
       "cache": true,
       "outputs": ["{workspaceRoot}/schema.graphql"]
