@@ -19,6 +19,9 @@
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "server:build"
+      },
       "configurations": {
         "development": {
           "buildTarget": "server:build:development"

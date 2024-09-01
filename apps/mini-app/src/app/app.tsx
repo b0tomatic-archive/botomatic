@@ -35,6 +35,7 @@ import { IdentifierContext } from '../contexts';
 import { useQuery } from '@apollo/client';
 import { GetIdentifierQuery } from '../__generated__/graphql';
 import { GET_IDENTIFIER } from './app.queries';
+import { env } from '../env';
 
 const IndexPage = () => {
   const imageUrls = [
@@ -86,6 +87,7 @@ export const App: FC = () => {
   // const fieldName = db.getFieldName(identifier);
   // const fieldData = db[fieldName].getData();
 
+  console.log(env.BASE_URL);
   console.log(data);
 
   // Don't forget to attach the navigator to allow it to control the BackButton state as well
@@ -97,12 +99,12 @@ export const App: FC = () => {
 
   return data?.data?.identifier?.id;
 
-  return (
-    <Router location={location} navigator={reactNavigator}>
-      <Routes>
-        <Route path="/" element={<IndexPage />}></Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
-  );
+  // return (
+  //   <Router location={location} navigator={reactNavigator}>
+  //     <Routes>
+  //       <Route path="/" element={<IndexPage />}></Route>
+  //       <Route path="*" element={<Navigate to="/" />} />
+  //     </Routes>
+  //   </Router>
+  // );
 };
