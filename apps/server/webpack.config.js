@@ -4,7 +4,7 @@ const { join } = require('path');
 /** @type {import('webpack-cli').ConfigOptions} */
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/server')
+    path: join(__dirname, '../../dist/apps/server'),
   },
   plugins: [
     new NxAppWebpackPlugin({
@@ -12,14 +12,17 @@ module.exports = {
       compiler: 'tsc',
       main: './src/main.ts',
       tsConfig: './tsconfig.app.json',
-      assets: ['./src/assets'],
+      assets: ['./src/assets', './src/medusa-config.js'],
       optimization: false,
       outputHashing: 'none',
-      transformers: [{
-        name: '@nestjs/graphql/plugin', options: {
-          introspectComments: true
-        }
-      }]
-    })
-  ]
+      transformers: [
+        {
+          name: '@nestjs/graphql/plugin',
+          options: {
+            introspectComments: true,
+          },
+        },
+      ],
+    }),
+  ],
 };
