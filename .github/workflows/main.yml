@@ -14,24 +14,35 @@ jobs:
         with:
           submodules: recursive
 
-      # - name: Git Submodule Update
-      #   run: |
-      #     git pull --recurse-submodules
-      #     git submodule update --remote --recursive
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
 
-      - name: Set up Node.js environment using nvm
-        run: |
-          export NVM_DIR="$HOME/.nvm"
-          mkdir -p $NVM_DIR
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
-          . $NVM_DIR/nvm.sh
-          nvm install
-          nvm use
-          node -v
-        shell: bash
+      # - name: Set up Node.js environment using nvm
+      #   run: |
+      #     export NVM_DIR="$HOME/.nvm"
+      #     mkdir -p $NVM_DIR
+      #     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+      #     . $NVM_DIR/nvm.sh
+      #     nvm install
+      #     nvm use
+      #     node -v
+      #   shell: bash
 
       - name: Enable corepack
         run: corepack enable
+
+      - name: Cache Medusa build
+        id: medusa-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            packages/medusa/**/*/node_modules
+            packages/medusa/**/*/dist
+          key: ${{ runner.os }}-medusa-build-${{ hashFiles('packages/medusa/package.json', 'packages/medusa/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-medusa-build-
 
       # TODO: For production, use published version,
       # so it'd get installed as an external dependency,
@@ -44,6 +55,17 @@ jobs:
       - name: MedusaJS - Build
         working-directory: packages/medusa
         run: yarn build
+
+      - name: Cache Botomatic build
+        id: botomatic-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            dist
+          key: ${{ runner.os }}-botomatic-build-${{ hashFiles('package.json', 'yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-botomatic-build-
 
       - name: Install dependencies
         run: yarn install --immutable
