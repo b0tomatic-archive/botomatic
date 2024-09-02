@@ -33,6 +33,14 @@ jobs:
       - name: Enable corepack
         run: corepack enable
 
+      - name: MedusaJS - Install dependencies
+        working-directory: packages/medusa
+        run: yarn install --immutable
+
+      - name: MedusaJS - Build
+        working-directory: packages/medusa
+        run: yarn build
+
       - name: Install dependencies
         run: yarn install --immutable
 
