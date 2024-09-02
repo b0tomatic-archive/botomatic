@@ -3,6 +3,8 @@ name: CI Pipeline
 on:
   push:
     branches: ['*']
+  repository_dispatch:
+    types: [submodule_update]
 
 jobs:
   build:
