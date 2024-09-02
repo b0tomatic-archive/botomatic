@@ -84,6 +84,12 @@
 
 ## Getting Started
 
+#### Clone with all submodules
+
+```shell
+git clone --recurse-submodules git@github.com:b0tomatic/botomatic.git # In case you need a specific branch: --branch <name>
+```
+
 **Don't have `nvm` installed?** For MacOS, Linux, [check the tutorial here.](https://github.com/nvm-sh/nvm) In case if you have Windows, [check this tutorial.](https://github.com/coreybutler/nvm-windows)
 
 Now select the project's Node.JS version:
@@ -98,9 +104,29 @@ Switch to the latest Yarn version by:
 corepack enable
 ```
 
-Install dependencies:
+#### Installing Dependencies for the Medusa Submodule
+
+Navigate to the Medusa submodule directory and install its dependencies:
 
 ```shell
+cd packages/medusa
+yarn
+```
+
+#### Building Medusa
+
+After installing the dependencies, build Medusa:
+
+```bash
+yarn build
+```
+
+#### Installing Project-Wide Dependencies
+
+Return to the root directory of the project and install the remaining dependencies:
+
+```bash
+cd ../../ # Returning to the project's root directory
 yarn
 ```
 
