@@ -19,19 +19,8 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Cache Medusa build
-        id: medusa-cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            packages/medusa/**/*/node_modules
-            packages/medusa/**/*/dist
-          key: ${{ runner.os }}-medusa-build-${{ hashFiles('packages/medusa/package.json', 'packages/medusa/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-medusa-build-
+      # - name: Enable corepack
+      # run: corepack enable
 
       # TODO: For production, use published version,
       # so it'd get installed as an external dependency,
