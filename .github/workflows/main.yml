@@ -53,13 +53,13 @@ jobs:
       # so it'd get installed as an external dependency,
       # instead of going through the same pipeline as it could in its own repository,
       # when being published
-      - name: MedusaJS - Install dependencies
-        working-directory: packages/medusa
-        run: yarn install --immutable
+      # - name: MedusaJS - Install dependencies
+      #   working-directory: packages/medusa
+      #   run: yarn install --immutable
 
-      - name: MedusaJS - Build
-        working-directory: packages/medusa
-        run: yarn build
+      # - name: MedusaJS - Build
+      #   working-directory: packages/medusa
+      #   run: yarn build
 
       - name: Install dependencies
         run: yarn install --immutable
