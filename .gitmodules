@@ -1,0 +1,3 @@
+[submodule "packages/medusa"]
+	path = packages/medusa
+	url = git@github.com:b0tomatic/medusa.git
