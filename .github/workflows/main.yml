@@ -14,10 +14,6 @@ jobs:
         with:
           submodules: true
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
       - name: Git Submodule Update
         run: |
           git pull --recurse-submodules
@@ -37,29 +33,17 @@ jobs:
       - name: Enable corepack
         run: corepack enable
 
-      - uses: actions/cache@v4
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-            **/.eslintcache
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       # TODO: For production, use published version,
       # so it'd get installed as an external dependency,
       # instead of going through the same pipeline as it could in its own repository,
       # when being published
-      # - name: MedusaJS - Install dependencies
-      #   working-directory: packages/medusa
-      #   run: yarn install --immutable
+      - name: MedusaJS - Install dependencies
+        working-directory: packages/medusa
+        run: yarn install --immutable
 
-      # - name: MedusaJS - Build
-      #   working-directory: packages/medusa
-      #   run: yarn build
+      - name: MedusaJS - Build
+        working-directory: packages/medusa
+        run: yarn build
 
       - name: Install dependencies
         run: yarn install --immutable
