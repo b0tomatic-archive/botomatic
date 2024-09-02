@@ -52,7 +52,6 @@ jobs:
         with:
           path: |
             .yarn/cache
-            node_modules
             dist
           key: ${{ runner.os }}-botomatic-${{ hashFiles('package.json', 'yarn.lock') }}
           restore-keys: |
