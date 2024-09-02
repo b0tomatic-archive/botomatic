@@ -51,7 +51,6 @@ jobs:
           path: |
             .yarn/cache
             .nx
-            dist
           key: ${{ runner.os }}-botomatic-${{ hashFiles('package.json', 'yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-botomatic-
