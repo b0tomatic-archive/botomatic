@@ -33,16 +33,20 @@ jobs:
       - name: Enable corepack
         run: corepack enable
 
-      - name: Install dependencies
-        run: yarn install --immutable
-
       # TODO: For production, use published version,
       # so it'd get installed as an external dependency,
       # instead of going through the same pipeline as it could in its own repository,
       # when being published
+      - name: MedusaJS - Install dependencies
+        working-directory: packages/medusa
+        run: yarn install --immutable
+
       - name: MedusaJS - Build
         working-directory: packages/medusa
         run: yarn build
+
+      - name: Install dependencies
+        run: yarn install --immutable
 
       - name: Build the project
         run: yarn build
