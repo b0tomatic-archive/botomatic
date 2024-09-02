@@ -1,1 +1,1 @@
-Medusa: The MIT License (MIT)
+[Medusa: The MIT License (MIT)](https://github.com/medusajs/medusa/blob/develop/LICENSE)
