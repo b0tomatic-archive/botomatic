@@ -19,8 +19,18 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      # - name: Enable corepack
-      # run: corepack enable
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Cache MedusaJS dependencies
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: |
+            packages/medusa/.yarn/cache
+          key: ${{ runner.os }}-medusa-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-medusa-
 
       # TODO: For production, use published version,
       # so it'd get installed as an external dependency,
@@ -34,16 +44,17 @@ jobs:
         working-directory: packages/medusa
         run: yarn build
 
-      - name: Cache Botomatic build
+      - name: Cache Botomatic dependencies & build
         id: botomatic-cache
         uses: actions/cache@v4
         with:
           path: |
+            .yarn/cache
             node_modules
             dist
-          key: ${{ runner.os }}-botomatic-build-${{ hashFiles('package.json', 'yarn.lock') }}
+          key: ${{ runner.os }}-botomatic-${{ hashFiles('package.json', 'yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-botomatic-build-
+            ${{ runner.os }}-botomatic-
 
       - name: Install dependencies
         run: yarn install --immutable
