@@ -81,6 +81,7 @@
 
 - [Telegram Mini-Apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk)
 - [Telegram UI Storybook](https://tgui.xelene.me)
+- [MedusaJS](https://docs.medusajs.com/)
 
 ## Getting Started
 
