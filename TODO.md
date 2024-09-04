@@ -1,79 +1,79 @@
-### Project TODOs
+# Задачи проекта
 
-- Headless UI, Nginx, Cache (+ Redis?) & explain why we didn't choose using SSR
+Headless UI, Nginx, Cache (+ Redis?) и объяснение, почему мы не выбрали использование SSR
 
-This document outlines the key tasks and considerations for the ongoing development. Below is a list of the tasks, along with brief descriptions and any relevant decisions or notes.
+Этот документ описывает ключевые задачи и аспекты текущей разработки. Ниже приведен список задач с краткими описаниями и любыми соответствующими решениями или заметками.
 
-#### 1. Telegram Mini-Apps Research
+## 1. Исследование мини-приложений для Telegram
 
-- **Objective:** Conduct thorough research on the development of mini-apps for Telegram.
-- **Focus Areas:**
-  - Best practices for Telegram mini-app development.
-  - Limitations and opportunities within the Telegram API.
-  - Examples of successful mini-apps and their architectures.
+- **Цель:** Провести тщательное исследование разработки мини-приложений для Telegram.
+- **Области фокуса:**
+  - Лучшие практики разработки мини-приложений для Telegram.
+  - Ограничения и возможности API Telegram.
+  - Примеры успешных мини-приложений и их архитектуры.
 
-#### 2. Database Design
+## 2. Проектирование базы данных
 
-- **Objective:** Design the database schema to support the features and functionality of the mini-apps.
-- **Database Choice:** PostgreSQL
-  - **Rationale:** PostgreSQL is chosen for its robustness, support for complex queries, and scalability.
-  - **Tasks:**
-    - Define entities and relationships.
-    - Design schema diagrams.
-    - Plan for indexing, optimization, and migration strategies.
+- **Цель:** Спроектировать схему базы данных для поддержки функционала мини-приложений.
+- **Выбор базы данных:** PostgreSQL
+  - **Обоснование:** Выбор PostgreSQL обусловлен его надежностью, поддержкой сложных запросов и масштабируемостью.
+  - **Задачи:**
+    - Определить сущности и их взаимосвязи.
+    - Спроектировать диаграммы схемы.
+    - Спланировать индексацию, оптимизацию и стратегии миграции.
 
-#### 3. Dockerization
+## 3. Докеризация
 
-- **Objective:** Containerize the application for easy deployment and environment consistency.
-- **Tasks:**
-  - Create Dockerfiles for each service (backend, frontend, database).
-  - Set up Docker Compose for local development.
-  - Ensure that all services can be easily deployed and scaled using Docker.
+- **Цель:** Контейнеризировать приложение для упрощения развертывания и обеспечения консистентности окружений.
+- **Задачи:**
+  - Создать Dockerfile для каждого сервиса (backend, frontend, база данных).
+  - Настроить Docker Compose для локальной разработки.
+  - Убедиться, что все сервисы могут быть легко развернуты и масштабированы с использованием Docker.
 
-#### 4. UI Libraries, Prettier & ESLint Setup
+## 4. Настройка UI-библиотек, Prettier и ESLint
 
-- **Objective:** Standardize the front-end development environment.
-- **Tasks:**
-  - Select and integrate UI libraries that align with the project's requirements.
-  - Set up Prettier for code formatting to maintain consistent code style across the project.
-  - Configure ESLint for identifying and fixing code quality issues.
+- **Цель:** Стандартизировать среду разработки фронтенда.
+- **Задачи:**
+  - Выбрать и интегрировать UI-библиотеки, соответствующие требованиям проекта.
+  - Настроить Prettier для форматирования кода, чтобы поддерживать единый стиль кода в проекте.
+  - Настроить ESLint для выявления и исправления проблем с качеством кода.
 
-#### 5. Clean `package.json`
+## 5. Очистка `package.json`
 
-- **Objective:** Optimize the `package.json` file for the project.
-- **Tasks:**
-  - Remove unused dependencies and scripts.
-  - Organize the file to make it more readable and maintainable.
-  - Ensure all necessary dependencies are correctly specified and up-to-date.
+- **Цель:** Оптимизировать файл `package.json` для проекта.
+- **Задачи:**
+  - Удалить неиспользуемые зависимости и скрипты.
+  - Организовать файл для улучшения его читаемости и удобства обслуживания.
+  - Убедиться, что все необходимые зависимости правильно указаны и актуальны.
 
-#### 6. Apollo Client Replacement (Optional)
+## 6. Замена Apollo Client (опционально)
 
-- **Objective:** Consider replacing Apollo Client with `urql` for improved performance.
-- **Rationale:** `urql` is a lighter-weight alternative that may offer better performance for heavy apps.
-- **Tasks:**
-  - Evaluate the pros and cons of switching from Apollo Client to `urql`.
-  - If chosen, replace Apollo Client with `urql` in the front-end.
-  - Update any relevant GraphQL queries and mutations to be compatible with `urql`.
+- **Цель:** Рассмотреть возможность замены Apollo Client на `urql` для повышения производительности.
+- **Обоснование:** `urql` — это более легковесная альтернатива, которая может обеспечить лучшую производительность для тяжелых приложений.
+- **Задачи:**
+  - Оценить плюсы и минусы перехода с Apollo Client на `urql`.
+  - Если принято решение, заменить Apollo Client на `urql` во фронтенде.
+  - Обновить соответствующие запросы и мутации GraphQL для совместимости с `urql`.
 
-#### 7. Logging
+## 7. Логирование
 
-- **Objective:** Implement a robust logging system for both the backend and frontend.
-- **Tasks:**
-  - Choose a logging library and set up centralized logging.
-  - Implement different log levels (info, warn, error, etc.).
-  - Ensure logs are stored and accessible for debugging and monitoring.
+- **Цель:** Внедрить надежную систему логирования как для backend, так и для frontend.
+- **Задачи:**
+  - Выбрать библиотеку для логирования и настроить централизованное логирование.
+  - Внедрить различные уровни логирования (info, warn, error и т.д.).
+  - Убедиться, что логи сохраняются и доступны для отладки и мониторинга.
 
-#### 8. Middleware Implementation
+## 8. Реализация middleware
 
-- **Objective:** Develop and integrate middlewares for handling various aspects of the application.
-- **Tasks:**
-  - Create middlewares for request validation, error handling, and session management.
-  - Integrate middlewares into the application server.
+- **Цель:** Разработать и интегрировать middleware для обработки различных аспектов приложения.
+- **Задачи:**
+  - Создать middleware для валидации запросов, обработки ошибок и управления сессиями.
+  - Интегрировать middleware в серверное приложение.
 
-#### 9. Authentication
+## 9. Аутентификация
 
-- **Objective:** Implement authentication mechanisms to secure the application.
-- **Tasks:**
-  - Choose an authentication strategy (e.g., JWT, OAuth).
-  - Implement the chosen strategy in both the backend and frontend.
-  - Ensure proper user management and session handling.
+- **Цель:** Внедрить механизмы аутентификации для защиты приложения.
+- **Задачи:**
+  - Выбрать стратегию аутентификации (например, JWT, OAuth).
+  - Реализовать выбранную стратегию как на backend, так и на frontend.
+  - Обеспечить правильное управление пользователями и сессиями.

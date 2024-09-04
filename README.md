@@ -1,17 +1,17 @@
-# Botomatic
+# Botomatic | Ботоматик
 
 [<img height="16" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_7QfylUbLhryd8FTo39v0uqC4mCNhlfyoXZwaT9DTfFVCF5VDq6Hjsor1d5jmPuPcFhY&usqp=CAU"> Miro](https://miro.com/app/board/uXjVKzd5qLo=/)
 [<img height="16" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/YouTrack_Icon.svg/2048px-YouTrack_Icon.svg.png"> YouTrack](https://botomatic.youtrack.cloud/agiles)
 [<img height="16" src="https://static-00.iconduck.com/assets.00/notion-icon-256x256-g1arps9e.png"> Notion](https://www.notion.so/041abe276e704275aeecd32991a0b0fe?v=ee6e2b1f1de741d384477959ffff2c76)
 [<img height="16" src="https://static-00.iconduck.com/assets.00/apps-figma-icon-2048x2048-ctjj5ab7.png"> Figma](https://www.figma.com/design/Pjo2j06BT3O0aq7e2ToQDr)
 
-## Stack
+## Стэк
 
 <table>
   <tr>
-    <td>Technology</td>
-    <td>Version</td>
-    <td>Notes</td>
+    <td>Технология</td>
+    <td>Версия</td>
+    <td>Заметки</td>
   </tr>
   <tr>
     <td>
@@ -77,65 +77,68 @@
   </tr>
 </table>
 
-#### Others
+#### Другие
 
+##### Telegram
 - [Telegram Mini-Apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk)
 - [Telegram UI Storybook](https://tgui.xelene.me)
+
+##### Headless e-commerce
 - [MedusaJS](https://docs.medusajs.com/)
 
-## Getting Started
+## Начало Работы
 
-#### Clone with all submodules
-
-```shell
-git clone --recurse-submodules git@github.com:b0tomatic/botomatic.git # In case you need a specific branch: --branch <name>
-```
-
-**Don't have `nvm` installed?** For MacOS, Linux, [check the tutorial here.](https://github.com/nvm-sh/nvm) In case if you have Windows, [check this tutorial.](https://github.com/coreybutler/nvm-windows)
-
-Now select the project's Node.JS version:
+#### Клонирование с сабмодулями
 
 ```shell
-nvm use # Sets the version from .nvmrc file
+git clone --recurse-submodules git@github.com:b0tomatic/botomatic.git # Если нужна определённая ветка: --branch <name>
 ```
 
-Switch to the latest Yarn version by:
+**`nvm` не установлен?** Для MacOS, Linux, [посмотрите туториал вот здесь.](https://github.com/nvm-sh/nvm) В случае, если у вас Windows, [то вот здесь.](https://github.com/coreybutler/nvm-windows)
+
+Теперь выберите версию Node.JS:
 
 ```shell
-corepack enable
+nvm use # Устанавливает версию из .nvmrc файла
 ```
 
-#### Installing Dependencies for the Medusa Submodule
+Переключиться на подходящую версию Yarn:
 
-Navigate to the Medusa submodule directory and install its dependencies:
+```shell
+corepack enable # Автоматически установит yarn той версии, что и в package.json
+```
+
+#### Установка зависимостей для сабмодуля Medusa
+
+Перейдите в директорию с сабмодулем Медузы и установите зависимости:
 
 ```shell
 cd packages/medusa
 yarn
 ```
 
-#### Building Medusa
+#### Сборка Медузы
 
-After installing the dependencies, build Medusa:
+После установки зависимостей, соберите Медузу:
 
 ```bash
 yarn build
 ```
 
-#### Installing Project-Wide Dependencies
+#### Установка зависимостей Ботоматика
 
-Return to the root directory of the project and install the remaining dependencies:
+Перейдите обратно в корень проекта и выполните установку оставшихся зависимостей:
 
 ```bash
-cd ../../ # Returning to the project's root directory
+cd ../../ # Вернулись в корень проекта
 yarn
 ```
 
-## Project Structure
+## Структура проекта
 
 ### Back-End
 
-**Server:** All the back-end infrastructure is here
+**Сервер:** Вся серверная инфраструктура здесь
 
 ```shell
 yarn server
@@ -143,71 +146,72 @@ yarn server
 
 ### Front-End
 
-**Client:** Dashboard, Mini-Apps Configurator
+**Client:** Dashboard, конфигуратор mini-app'ов
 
 ```shell
 yarn client
 ```
 
-**Mini-App:** The Telegram Mini-App itself
+**Mini-App:** Telegram mini-app пользователя
 
 ```shell
 yarn mini-app
 ```
 
-## Build & Deploy
+## Сборка & Развёртывание
 
-Every app is built by command:
+Все проекты собираются командой:
 
 ```shell
 nx build PROJECT_NAME
 ```
+_(Если в `project.json` соответствующего приложения/библиотеки не указано иначе, см. ниже подробно)_
 
-To build the whole project, simply run:
+Чтобы собрать весь проект целиком, просто выполните команду:
 
 ```shell
 yarn build
 ```
 
-To see the flow of projects/tasks depend on each other:
+Чтобы увидеть граф зависимости локальных проектов/задач между собой:
 
 ```shell
 nx graph
 ```
 
-As the UI appears, at the top of the left sidebar you can select `Projects`, `Tasks`.
+В открывшемся пользовательском интерфейсе, в верхней части левой боковой панели вы можете выбрать `Projects` и `Tasks`.
 
-All the tasks of apps and libs that Nx can run are is stored in `nx.json` at the root of the project, and in `project.json` at the root of each app or library (e.g. **apps/client/project.json**).
+Все задачи для приложений и библиотек, которые может запускать Nx, хранятся в файле `nx.json` в корне проекта, а также в файле `project.json` в корне каждого приложения или библиотеки (например, `apps/client/project.json`).
 
-[More about `nx.json`](https://nx.dev/reference/nx-json)
+[Подробнее о `nx.json`](https://nx.dev/reference/nx-json)
 
-[More about `project.json`](https://nx.dev/reference/project-configuration)
+[Подробнее о `project.json`](https://nx.dev/reference/project-configuration)
 
-## GraphQL Code Generation and Schema Management
+## Генерация кода GraphQL и управление схемой
 
-### Code Generation Strategy
+### Стратегия генерации кода
 
-#### Code-First Approach (No Backend Code Generation)
+#### Подход Code-First (Без генерации кода на стороне сервера)
 
-In a code-first approach, there's no need to generate GraphQL code for the backend. The schema is automatically generated based on the TypeScript definitions in the backend. Therefore, code generation is only necessary for the frontend, to create type-safe queries, mutations, and other GraphQL operations.
+При использовании подхода Code-First нет необходимости генерировать код GraphQL для серверной части. Схема автоматически создается на основе TypeScript-определений на сервере. Поэтому генерация кода необходима только для фронтенда, чтобы создать type-safe запросы, мутации и другие операции GraphQL.
 
-#### Frontend-Only Code Generation
+#### Генерация кода только для фронтенда
 
-Since the backend does not require code generation, the process can be streamlined by focusing solely on the frontend. The GraphQL code generator should be configured to run exclusively for the frontend, ensuring that type-safe client-side operations are available without unnecessary backend processing.
+Поскольку серверная часть не требует генерации кода, процесс можно упростить, сосредоточив внимание исключительно на фронтенде. Генератор кода GraphQL должен быть настроен на выполнение только для фронтенда, обеспечивая доступность type-safe операций на стороне клиента без ненужной обработки на сервере.
 
-### Schema Generation and Usage
+### Генерация и использование схемы
 
-#### Backend Schema Generation
+#### Генерация схемы на стороне сервера
 
-The GraphQL schema is generated either:
+Схема GraphQL генерируется либо:
 
-- Automatically during each startup or rebuild of the NestJS application.
-- Manually by running `build` or `schema` generation command.
+- Автоматически при каждом запуске или пересборке приложения NestJS.
+- Вручную с помощью выполнения команды `build` или команды генерации `schema`.
 
-#### Frontend Code Generation
+#### Генерация кода для фронтенда
 
-By running `build` or `schema` command for the client, the server schema is always generated first, then the frontend GraphQL code is automatically generated. This step is essential to ensure that the frontend is synchronized with the latest schema, providing type-safe operations for queries, mutations, and subscriptions.
+При выполнении команды `build` или `schema` для клиента, сначала генерируется серверная схема, затем автоматически генерируется код GraphQL для фронтенда. Этот шаг необходим, чтобы фронтенд был синхронизирован с последней версией схемы, обеспечивая type-safe операции для запросов, мутаций и подписок, без необходимости _держать_ серверное приложение развёрнутым.
 
-#### Build Dependencies
+#### Зависимости сборки
 
-The client-side code generation depends on the server schema being up-to-date. Therefore, any client build process that requires GraphQL code generation must ensure that the server schema has been generated first.
+Генерация кода на стороне клиента зависит от актуальности серверной схемы. Поэтому любой процесс сборки клиента, требующий генерации кода GraphQL на клиенте, должен сопровождаться свеже-сгенерированной версией схемы на сервере.
